@@ -38,7 +38,7 @@ func (c *Example) AjaxData(){
 	var Qtab datatables.Data
 	Qtab.Ctx = c.Input() //datatables get
 
-	Qtab.TableName = "example" //modles tables name
+	Qtab.TableName = "example_record" //modles tables name
 	Qtab.Columns = []string{"id","user_name","operation","action","result","create_time"} //datatables columns arrange
 	Qtab.SearchFilter = []string{"user_name","operation","action","result"} //datatables filter
 	datatables.RegisterColumns[Qtab.TableName] = new([]models.ExampleRecord) //register result 
