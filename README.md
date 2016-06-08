@@ -3,7 +3,7 @@
 [beego](https://github.com/astaxie/beego/) MVC  [datatables](http://datatables.net/examples/server_side/pipeline.html) plugins
 
 ###### Download adn install
-`go get  https://github.com/beego-datatables/datatables`
+`go get "github.com/beego-datatables/datatables"`
 
 ###### Usage
 
