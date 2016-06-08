@@ -43,7 +43,8 @@ func (c *Example) AjaxData(){
 	Qtab.SearchFilter = []string{"user_name","operation","action","result"} //datatables filter
 	datatables.RegisterColumns[Qtab.TableName] = new([]models.ExampleRecord) //register result 
 
-	rs , rserr := Qtab.Table()
+	rs , _ := Qtab.Table()
+
 
 	c.Data["json"] = rs
 
