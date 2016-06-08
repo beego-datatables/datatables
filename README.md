@@ -5,7 +5,7 @@
 ###### Download adn install
 `go get  https://github.com/beego-datatables/datatables`
 
-###### Example
+###### Use and example
 
 routers
 ```
