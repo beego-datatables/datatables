@@ -4,10 +4,6 @@ import (
 	"github.com/astaxie/beego/orm"
 	"net/url"
 	"strconv"
-	"github.com/astaxie/beego"
-	"fmt"
-	"strings"
-	"unicode"
 )
 
 type DataTables interface {
