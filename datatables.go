@@ -39,24 +39,12 @@ func (p *Data)Table() (rs interface{}, err error){
 	draws,_ := strconv.Atoi(p.Ctx.Get("draw"))
 
 
-	//反射
-	//tb := reflect.TypeOf(p.Model)
-	//model_tb_name := tb.Elem().Name()
-	//beego.Info(model_tb_name)
-	//if len(model_tb_name) > 0{
-	//
-	//	return "1111111",nil
-	//}
-
-
 	//query field
 	var selectStr string
 	for k,v := range p.Columns{
 		if k != 0{ selectStr += ","}
 		selectStr += v
 	}
-	//beego.Info(selectStr)
-
 
 	//search
 	var whereStr  string
