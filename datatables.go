@@ -23,11 +23,11 @@ type Data struct {
 
 func (p *Data)Table() (rs interface{}, err error){
 	start,err := strconv.Atoi(p.Ctx.Get("start"))
-	length,_ := strconv.Atoi(p.Ctx.Get("length"))
+	length,err := strconv.Atoi(p.Ctx.Get("length"))
 	search := p.Ctx.Get("search[value]")
-	order_column,_ := strconv.Atoi(p.Ctx.Get("order[0][column]"))
+	order_column,err := strconv.Atoi(p.Ctx.Get("order[0][column]"))
 	order_dir := p.Ctx.Get("order[0][dir]")
-	draws,_ := strconv.Atoi(p.Ctx.Get("draw"))
+	draws,err := strconv.Atoi(p.Ctx.Get("draw"))
 
 
 	//query field
