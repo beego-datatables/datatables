@@ -65,10 +65,6 @@ func (p *Data)Table() (rs interface{}, err error){
 	//offset
 	colOffset := start
 	qb, _ := orm.NewQueryBuilder("mysql")
-	Str1 := "OperationRecord"
-
-	beego.Info(hump2Snakelike(Str1))
-
 
 	//search
 	if search_len >0 {
@@ -126,23 +122,4 @@ func (p *Data)Table() (rs interface{}, err error){
 		}}()},
 	err
 
-}
-
-
-func hump2Snakelike(hump string) string{
-
-	var snk string
-	for k,v := range hump{
-		if k == 0{
-			snk += strings.ToLower(fmt.Sprintf("%c",v))
-		}else{
-			if unicode.IsUpper(v){
-				snk += strings.ToLower(fmt.Sprintf("_%c",v))
-			}else{
-				snk += fmt.Sprintf("%c",v)
-			}
-		}
-	}
-
-	return  snk
 }
