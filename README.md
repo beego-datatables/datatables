@@ -8,7 +8,7 @@
 ###### Usage
 
 routers
-```
+```go
 package routers
 
 import (
@@ -24,7 +24,7 @@ func init() {
 ```
 
 beego controllers:
-```
+```go
 package controllers
 
 type Example struct {
@@ -56,7 +56,7 @@ func (c *Example) AjaxData(){
 
 models
 
-```
+```go
 type ExampleRecord struct {
 
 	Id					int
@@ -71,7 +71,7 @@ type ExampleRecord struct {
 
 datatables ajax
 
-```
+```javascript
     var example_table = $('#table').DataTable({
         ...
         "processing": true,
