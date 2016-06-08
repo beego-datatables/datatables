@@ -6,11 +6,6 @@ import (
 	"strconv"
 )
 
-type DataTables interface {
-
-	Table(ctx url.Values, tb_name string,columns[] string, search_filter []string) (interface{},error)
-
-}
 
 var RegisterColumns map[string]interface{} = map[string]interface{}{
 
@@ -27,7 +22,7 @@ type Data struct {
 
 
 func (p *Data)Table() (rs interface{}, err error){
-	start,_ := strconv.Atoi(p.Ctx.Get("start"))
+	start,err := strconv.Atoi(p.Ctx.Get("start"))
 	length,_ := strconv.Atoi(p.Ctx.Get("length"))
 	search := p.Ctx.Get("search[value]")
 	order_column,_ := strconv.Atoi(p.Ctx.Get("order[0][column]"))
