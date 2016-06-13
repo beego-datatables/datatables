@@ -83,7 +83,7 @@ datatables ajax
         "columns": [
             { "data": "id" },
             { "data": "username" },
-            { "data": "execute" },
+            { "data": "operation" },
             { "data": "action" },
             { "data": "result" }
         ],
