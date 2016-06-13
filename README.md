@@ -27,6 +27,13 @@ beego controllers:
 ```go
 package controllers
 
+import (
+	"github.com/astaxie/beego"
+	"time"
+	"github.com/beego-datatables/datatables"
+	".../models"
+)
+
 type Example struct {
 
 	beego.Controller
