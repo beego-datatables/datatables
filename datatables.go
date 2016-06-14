@@ -6,17 +6,17 @@ import (
 	"strconv"
 )
 
-
 var RegisterColumns map[string]interface{} = map[string]interface{}{
 
 }
 
 type Data struct {
-	Ctx				url.Values //get args
+	Ctx		url.Values //get args
+	DBName		string	//DB name
 	TableName   	string	//table name
-	Columns			[]string //select column
+	Columns		[]string //select column
 	SearchFilter	[]string //where filter
-	//Model            interface{}
+	Model           interface{}
 }
 
 
@@ -66,6 +66,7 @@ func (p *Data)Table() (rs interface{}, err error){
 	}
 	sql := qb.String()
 	o := orm.NewOrm()
+	o.Using(p.DBName)
 
 	cl := RegisterColumns[p.TableName]
 	num, err := o.Raw(sql).QueryRows(cl)
