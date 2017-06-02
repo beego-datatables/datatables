@@ -6,10 +6,6 @@ import (
 	"strconv"
 )
 
-var RegisterColumns map[string]interface{} = map[string]interface{}{
-
-}
-
 type Data struct {
 	Ctx		url.Values //get args
 	DBName		string	//DB name
@@ -19,8 +15,6 @@ type Data struct {
 	SearchFilter	[]string //where filter
 	Model           interface{}
 }
-
-
 
 func (p *Data)Table() (rs interface{}, err error){
 	start,err := strconv.Atoi(p.Ctx.Get("start"))
@@ -69,23 +63,13 @@ func (p *Data)Table() (rs interface{}, err error){
 	o := orm.NewOrm()
 	o.Using(p.DBName)
 
-	cl := RegisterColumns[p.TableName]
-	num, err := o.Raw(sql).QueryRows(cl)
-
-
+	num, err := o.Raw(sql).QueryRows(p.TableName)
 
 	recordTotal, err := o.QueryTable(p.TableName).Count() //data sum
 	var recordsFiltered int32 //search data sum
-	type rFilterCont struct {
-		CntNumber 		int
-	}
-	var rcount rFilterCont
+
 	if search_len >0 {
-		qb2, _ := orm.NewQueryBuilder("mysql")
-		qb2.Select("Count(*) AS cnt_number ").From(p.TableName).Where(whereStr)
-		sqlFilter := qb2.String()
-		o.Raw(sqlFilter).QueryRow(&rcount)
-		recordsFiltered = int32(rcount.CntNumber)
+		recordsFiltered = int32(num)
 	}else{
 		recordsFiltered = int32(recordTotal)
 	}
