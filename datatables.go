@@ -15,6 +15,7 @@ type Data struct {
 	DBName		string	//DB name
 	TableName   	string	//table name
 	Columns		[]string //select column
+	Order		[]string //order
 	SearchFilter	[]string //where filter
 	Model           interface{}
 }
@@ -53,15 +54,15 @@ func (p *Data)Table() (rs interface{}, err error){
 			whereStr +=  v + " LIKE " + "\"%"+search+"%\"" //like
 		}
 		if order_dir == "asc"{
-			qb.Select(selectStr).From(p.TableName).Where(whereStr).OrderBy(p.Columns[order_column]).Asc().Limit(length).Offset(colOffset)
+			qb.Select(selectStr).From(p.TableName).Where(whereStr).OrderBy(p.Order[order_column]).Asc().Limit(length).Offset(colOffset)
 		}else{
-			qb.Select(selectStr).From(p.TableName).Where(whereStr).OrderBy(p.Columns[order_column]).Desc().Limit(length).Offset(colOffset)
+			qb.Select(selectStr).From(p.TableName).Where(whereStr).OrderBy(p.Order[order_column]).Desc().Limit(length).Offset(colOffset)
 		}
 	}else{
 		if order_dir == "asc"{
-			qb.Select(selectStr).From(p.TableName).OrderBy(p.Columns[order_column]).Asc().Limit(length).Offset(colOffset)
+			qb.Select(selectStr).From(p.TableName).OrderBy(p.Order[order_column]).Asc().Limit(length).Offset(colOffset)
 		}else{
-			qb.Select(selectStr).From(p.TableName).OrderBy(p.Columns[order_column]).Desc().Limit(length).Offset(colOffset)
+			qb.Select(selectStr).From(p.TableName).OrderBy(p.Order[order_column]).Desc().Limit(length).Offset(colOffset)
 		}
 	}
 	sql := qb.String()
