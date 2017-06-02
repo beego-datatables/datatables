@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"strconv"
 )
-
+var RegisterColumns map[string]interface{} = map[string]interface{}{}
 type Data struct {
 	Ctx		url.Values //get args
 	DBName		string	//DB name
@@ -63,7 +63,8 @@ func (p *Data)Table() (rs interface{}, err error){
 	o := orm.NewOrm()
 	o.Using(p.DBName)
 
-	num, err := o.Raw(sql).QueryRows(p.TableName)
+	cl := RegisterColumns[p.TableName]
+	num, err := o.Raw(sql).QueryRows(cl)
 
 	recordTotal, err := o.QueryTable(p.TableName).Count() //data sum
 	var recordsFiltered int32 //search data sum
