@@ -44,7 +44,7 @@ func (c *Example) AjaxData(){
 
 	var Qtab datatables.Data
 	Qtab.Ctx = c.Input() //datatables get
-
+	Qtab.DBName = "default"
 	Qtab.TableName = "example_record" //modles tables name
 	Qtab.Columns = []string{"id","user_name","operation","action","result","create_time"} //datatables columns arrange
 	Qtab.Order = []string{"","user_name","","action","result","create_time"} 
