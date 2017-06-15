@@ -47,6 +47,7 @@ func (c *Example) AjaxData(){
 
 	Qtab.TableName = "example_record" //modles tables name
 	Qtab.Columns = []string{"id","user_name","operation","action","result","create_time"} //datatables columns arrange
+	Qtab.Order = []string{"","user_name","","action","result","create_time"} 
 	Qtab.SearchFilter = []string{"user_name","operation","action","result"} //datatables filter
 	datatables.RegisterColumns[Qtab.TableName] = new([]models.ExampleRecord) //register result 
 
@@ -67,7 +68,7 @@ models
 ```go
 type ExampleRecord struct {
 
-	Id					int
+	Id				int
 	User				*User 		`orm:"rel(fk);null;on_delete(set_null)"`
 	Operation 			string
 	Action 				string
