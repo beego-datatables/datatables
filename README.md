@@ -98,3 +98,6 @@ datatables ajax
         ...
        })
 ```
+#### LICENSE
+
+MIT
